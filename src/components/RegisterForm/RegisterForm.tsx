@@ -20,11 +20,13 @@ export const RegisterForm = ({setTaskList}:Props) => {
   const onSubmitForm = (e: React.FormEvent) => {
     e.preventDefault();
     // ここに追加ボタン押下時の処理を書く
+
     const newTask = {
       id: Date.now(),
       title: title,
       detail: detail,
     };
+    
     setTaskList((prev) => [...prev,newTask]);
     setTitle('');
     setDetail('');
@@ -32,9 +34,9 @@ export const RegisterForm = ({setTaskList}:Props) => {
 
   return (
     <form style={formCard} onSubmit={(e) => onSubmitForm(e)}>
-      <input style={input} type='text' value={title} onChange={(e) => setTitle(e.target.value)} placeholder='タイトルを入力' />
+      <input style={input} type='text' value={title} onChange={(e) => setTitle(e.target.value)} placeholder='タイトルを入力'  />
       <br />
-      <textarea style={textarea} value={detail} onChange={(e) => setDetail(e.target.value)} rows={7} placeholder='TODOを入力'></textarea>
+      <textarea style={textarea} value={detail} onChange={(e) => setDetail(e.target.value)} rows={7} placeholder='TODOを入力' ></textarea>
       <div style={actions}>
         <button style={primaryBtn(true)} type='submit' disabled={isError}>
           追加

@@ -14,7 +14,7 @@ export const TaskCard = ({ task ,taskList,setTaskList}: Props) => {
   const [editedTitle, setEditedTitle] = useState(title);
   const [editedDetail, setEditedDetail] = useState(detail);
   //どちらかが入力されてないと追加できない
-  const isFormEmpty = !title.trim() || !detail.trim();
+  const isFormEmpty = !editedTitle.trim() || !editedDetail.trim();
   //const isInvalidMessage = Boolean(errorMessage.title || errorMessage.detail);
   const isError = isFormEmpty //|| isInvalidMessage;
 
