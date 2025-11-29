@@ -9,6 +9,11 @@ export const RegisterForm = ({setTaskList}:Props) => {
   const [title, setTitle] = useState('');
   const [detail, setDetail] = useState('');
 
+  //どちらかが入力されてないと追加できない
+  const isFormEmpty = !title.trim() || !detail.trim();
+  //const isInvalidMessage = Boolean(errorMessage.title || errorMessage.detail);
+  const isError = isFormEmpty //|| isInvalidMessage;
+
   /**
    * TODO：新規登録の作成
    */
@@ -21,15 +26,17 @@ export const RegisterForm = ({setTaskList}:Props) => {
       detail: detail,
     };
     setTaskList((prev) => [...prev,newTask]);
+    setTitle('');
+    setDetail('');
   };
 
   return (
     <form style={formCard} onSubmit={(e) => onSubmitForm(e)}>
-      <input style={input} type='text' value={title} onChange={(e) => setTitle(e.target.value)} placeholder='タイトルの入力' />
+      <input style={input} type='text' value={title} onChange={(e) => setTitle(e.target.value)} placeholder='タイトルを入力' />
       <br />
-      <textarea style={textarea} value={detail} onChange={(e) => setDetail(e.target.value)} rows={7} placeholder='TODOの入力'></textarea>
+      <textarea style={textarea} value={detail} onChange={(e) => setDetail(e.target.value)} rows={7} placeholder='TODOを入力'></textarea>
       <div style={actions}>
-        <button style={primaryBtn(true)} type='submit'>
+        <button style={primaryBtn(true)} type='submit' disabled={isError}>
           追加
         </button>
       </div>
