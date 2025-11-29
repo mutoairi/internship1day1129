@@ -35,6 +35,11 @@ export const TaskCard = ({ task ,taskList,setTaskList}: Props) => {
    */
   const onClickDeleteButton = () => {
     // ここに削除ボタン押下時の処理
+     
+      const deleteTaskList=taskList.filter((t)=>t.id!==task.id)
+    console.log(deleteTaskList);
+    
+    setTaskList([...deleteTaskList]);
   };
 
   // TODO：編集の作成
