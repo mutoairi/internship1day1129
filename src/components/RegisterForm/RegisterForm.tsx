@@ -20,7 +20,7 @@ export const RegisterForm = ({setTaskList}:Props) => {
       title: title,
       detail: detail,
     };
-    setTaskList([newTask]);
+    setTaskList((prev) => [...prev,newTask]);
   };
 
   return (
